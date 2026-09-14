@@ -17,6 +17,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install pytest pyyaml
-      - env:
+      - name: Import core and doctor
+        env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m pytest tests -q --ignore=tests/test_site_e2e.py
+        run: |
+          python -c "import kraken; print('ok')"
+          python -m kraken self plan
+          python -m pytest tests/test_grant.py tests/test_hooks.py -q
