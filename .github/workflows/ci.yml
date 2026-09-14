@@ -23,4 +23,4 @@ jobs:
         run: |
           python -c "import kraken; print('ok')"
           python -m kraken self plan
-          python -m pytest tests/test_grant.py tests/test_hooks.py -q
+          python -m pytest tests/test_config_chain.py tests/test_license.py tests/test_first_run.py -q
